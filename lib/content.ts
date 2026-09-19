@@ -270,7 +270,7 @@ export const webVideo = [
     id: "web",
     title: "Diseño y desarrollo web",
     cta: "Ver portfolio web",
-    href: "https://frankrdz.vercel.app/",
+    href: "https://frankrdz.com/",
     bg: img.webBg,
   },
   {
