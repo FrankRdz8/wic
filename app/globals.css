@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Identidad tomada del portfolio en PDF: amarillo ácido, gris tinta, negro y blanco. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-wic: #d0d611;
+  --color-ink: #1d1d1d;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-anton);
+  --font-heading: var(--font-montserrat);
+  --font-script: var(--font-saint-delafield);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-wic);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-wic);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Numerales de sección en contorno ("01.", "02."…) */
+  .text-outline {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px currentColor;
+  }
+
+  @media (min-width: 1024px) {
+    .text-outline {
+      -webkit-text-stroke-width: 4px;
+    }
+  }
+
+  /* Cinta de texto infinita */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 45s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
